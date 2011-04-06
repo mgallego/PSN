@@ -1,0 +1,14 @@
+{% extends "PSNMainBundle::layout.html.twig" %}
+{% block content %}
+
+<h1>PSN</h1>
+
+<h2> Acciones disponibles </h2>
+
+  <a href="{{ url('_psn_prueba')}}">Prueba</a>
+
+  {% set code = code(_self) %}  
+
+  {{ code|raw }}
+{% endblock %}
+
