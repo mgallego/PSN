@@ -83,7 +83,7 @@ class DefaultController extends Controller
     }
 		
 
-    //valida el login hardcodeado, no busca en base de datos ni nada
+    //valida el login
      /**
      * @extra:Route("/login_check", name="_psn_login_check")
      * 
