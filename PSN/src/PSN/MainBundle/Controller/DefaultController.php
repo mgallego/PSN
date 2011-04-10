@@ -60,7 +60,7 @@ class DefaultController extends Controller
     	
     	
     }
-    
+   
     //genera un formulario de contacto
 	/**
      * @extra:Route("/contact", name="_demo_contact")

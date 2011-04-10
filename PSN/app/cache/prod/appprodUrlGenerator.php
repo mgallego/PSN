@@ -17,8 +17,14 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
        '_demo_secured_hello' => true,
        '_demo_secured_hello_admin' => true,
        '_demo' => true,
+       '_demo_crear' => true,
+       '_demo_consultar' => true,
        '_demo_hello' => true,
        '_demo_contact' => true,
+       '_psn' => true,
+       '_psn_prueba' => true,
+       '_psn_login' => true,
+       '_psn_login_check' => true,
     );
 
     /**
@@ -108,6 +114,22 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
         return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => '',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'demo',    3 => NULL,  ),));
     }
 
+    private function get_demo_crearRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'Acme\\DemoBundle\\Controller\\DemoController::crearAction';
+
+        return array(array (  'name' => '{name}',), $defaults, array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '{name}',    3 => 'name',  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'crear',    3 => NULL,  ),  2 =>   array (    0 => 'text',    1 => '/',    2 => 'demo',    3 => NULL,  ),));
+    }
+
+    private function get_demo_consultarRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'Acme\\DemoBundle\\Controller\\DemoController::consultarAction';
+
+        return array(array (  'id' => '{id}',), $defaults, array (), array (  0 =>   array (    0 => 'variable',    1 => '/',    2 => '{id}',    3 => 'id',  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'consultar',    3 => NULL,  ),  2 =>   array (    0 => 'text',    1 => '/',    2 => 'demo',    3 => NULL,  ),));
+    }
+
     private function get_demo_helloRouteInfo()
     {
         $defaults = $this->defaults;
@@ -119,8 +141,40 @@ class appprodUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerat
     private function get_demo_contactRouteInfo()
     {
         $defaults = $this->defaults;
-        $defaults['_controller'] = 'Acme\\DemoBundle\\Controller\\DemoController::contactAction';
+        $defaults['_controller'] = 'PSN\\MainBundle\\Controller\\DefaultController::contactAction';
 
-        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'contact',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'demo',    3 => NULL,  ),));
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'contact',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'psn',    3 => NULL,  ),));
+    }
+
+    private function get_psnRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'PSN\\MainBundle\\Controller\\DefaultController::indexAction';
+
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => '',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'psn',    3 => NULL,  ),));
+    }
+
+    private function get_psn_pruebaRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'PSN\\MainBundle\\Controller\\DefaultController::pruebaAction';
+
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'prueba',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'psn',    3 => NULL,  ),));
+    }
+
+    private function get_psn_loginRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'PSN\\MainBundle\\Controller\\DefaultController::loginAction';
+
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'login',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'psn',    3 => NULL,  ),));
+    }
+
+    private function get_psn_login_checkRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'PSN\\MainBundle\\Controller\\DefaultController::loginCheckAction';
+
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'login_check',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'psn',    3 => NULL,  ),));
     }
 }

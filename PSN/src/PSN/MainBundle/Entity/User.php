@@ -1,6 +1,7 @@
 <?php
 
 namespace PSN\MainBundle\Entity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * PSN\MainBundle\Entity\User
@@ -19,6 +20,14 @@ class User
      */
     private $id;
 
+
+    /**
+     * @var string $username
+     * 
+     * @orn:Column(name="username", type:"string", lenght=15, nullable=false)
+     */
+    private $username;
+
     /**
      * @var string $name
      *
@@ -32,6 +41,8 @@ class User
      * @orm:Column(name="password", type="string", length=15, nullable=true)
      */
     private $password;
+
+
 
 
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace PSN\MainBundle\Entity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * PSN\MainBundle\Entity\User
@@ -8,7 +9,7 @@ namespace PSN\MainBundle\Entity;
  * @orm:Table(name="User")
  * @orm:Entity
  */
-class User
+class User extends UserInterface
 {
     /**
      * @var integer $id
@@ -18,6 +19,14 @@ class User
      * @orm:GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+
+    /**
+     * @var string $username
+     * 
+     * @orn:Column(name="username", type:"string", lenght=15, nullable=false)
+     */
+    private $username;
 
     /**
      * @var string $name
@@ -34,4 +43,7 @@ class User
     private $password;
 
 
+
+
+   
 }
