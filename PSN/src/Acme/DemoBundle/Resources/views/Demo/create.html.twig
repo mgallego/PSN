@@ -1,0 +1,52 @@
+{% extends "AcmeDemoBundle::layout.html.twig" %}
+
+{% block title "Symfony - Login form" %}
+
+{% block content %}
+
+<h1>
+
+
+</h1>
+
+	    <form action="{{ path("_demo_create_user") }}" method="POST">
+		
+
+	<!--{{ path("_psn_login_check") }} -->
+
+		<!-- Muestra todos los campos, si no se mete una variable label en el codigo del campo del form aparece como
+		     label el nombre del campo, lo cual no queda bien. Si no se implementa esa funcionalidad habría que 
+		     hacerlo mostrando los campos de uno en uno -->
+        <!--{{ form_field(form) }}-->
+
+		
+		<!-- Creamos la etiqueta para el campo -->
+        {{ form_label(form.username,'Usuario') }}
+        <!-- Mostramos el campo -->
+        {{ form_field(form.username) }}
+        
+        <br>
+        
+        {{ form_label(form.userpass, 'Password') }}
+        {{ form_field(form.userpass) }}
+        
+        <br>
+      
+	{{ form_label(form.first_name, 'nombre') }}
+	{{ form_field(form.first_name) }}
+
+	<br>
+
+	{{ form_label(form.last_name, 'apellidos') }}
+	{{ form_field(form.last_name) }}
+  
+	<br>
+
+	{{ form_label(form.email, 'email') }}
+	{{ form_field(form.email) }}
+
+	<br>
+
+	<input type="submit" value="Crear" />
+    </form>
+{% endblock %}
