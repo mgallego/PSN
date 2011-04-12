@@ -31,6 +31,8 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
        '_demo_consultar' => true,
        '_demo_hello' => true,
        '_demo_contact' => true,
+       '_demo_create_user' => true,
+       '_demo_create' => true,
        '_psn' => true,
        '_psn_prueba' => true,
        '_psn_login' => true,
@@ -234,6 +236,22 @@ class appdevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         $defaults['_controller'] = 'PSN\\MainBundle\\Controller\\DefaultController::contactAction';
 
         return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'contact',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'psn',    3 => NULL,  ),));
+    }
+
+    private function get_demo_create_userRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'Acme\\DemoBundle\\Controller\\DemoController::CreateUserAction';
+
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'createUser',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'demo',    3 => NULL,  ),));
+    }
+
+    private function get_demo_createRouteInfo()
+    {
+        $defaults = $this->defaults;
+        $defaults['_controller'] = 'Acme\\DemoBundle\\Controller\\DemoController::createAction';
+
+        return array(array (), $defaults, array (), array (  0 =>   array (    0 => 'text',    1 => '/',    2 => 'create',    3 => NULL,  ),  1 =>   array (    0 => 'text',    1 => '/',    2 => 'demo',    3 => NULL,  ),));
     }
 
     private function get_psnRouteInfo()

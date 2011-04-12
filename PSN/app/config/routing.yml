@@ -16,3 +16,4 @@ _psn:
     resource: "@PSNMainBundle/Controller/DefaultController.php"
     type:     annotation
     prefix:   /psn
+

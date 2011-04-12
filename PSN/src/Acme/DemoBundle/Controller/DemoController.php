@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Acme\DemoBundle\Form\ContactForm;
 use Acme\DemoBundle\Entity\User;
+use Acme\DemoBundle\Form\CreateUserForm;
+use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 
 class DemoController extends Controller
@@ -62,6 +64,7 @@ class DemoController extends Controller
         return array('name' => $name);
     }
 
+
     /**
      * @extra:Route("/contact", name="_demo_contact")
      * @extra:Template()
@@ -81,4 +84,70 @@ class DemoController extends Controller
 
         return array('form' => $form);
     }
+
+    /**
+     * @extra:Route("/createUser", name="_demo_create_user")
+     */
+    public function CreateUserAction()
+    {
+    	
+    	//obtenemos el request
+    	$request = $this->get('request');
+    	
+    	//cargamos en un array la clave login del post
+    	$arrayuser = $request->request->get('createuser');
+    	
+
+	//comparamos con los valore de la base de datos
+	$em = $this->get('doctrine.orm.entity_manager');
+
+	$user = new User();
+	$user->setFirstName($arrayuser['first_name']);
+	$user->setLastName($arrayuser['last_name']);
+	$user->setUserName($arrayuser['username']);
+	$user->setEmail($arrayuser['email']);
+	$user->setSalt(md5(time()));
+
+
+	//	  $user->setPassword($arrayuser['userpass']);
+
+	$encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
+	$password = $encoder->encodePassword($arrayuser['userpass'], $user->getSalt());
+
+	$user->setPassword($password);
+
+	$em->persist($user);
+	$em->flush();
+	
+	$response =  new Response('<html><header></header><body><h1>USUARIO CREADO CORRECTAMENTE</h1></body></html>');
+	
+  	$response->headers->set('Content-Type', 'text/html');
+    	    
+    	return $response;
+
+
+    }
+
+    /**
+     * @extra:Route("/create", name="_demo_create")
+     * @extra:Template()
+     */
+    public function createAction()
+    {
+        $form = CreateUserForm::create($this->get('form.context'), 'createuser');
+
+        $form->bind($this->container->get('request'), $form);
+	/* if ($form->isValid()) {
+            $form->send($this->get('mailer'));
+
+            $this->get('session')->setFlash('notice', 'Message sent!');
+
+            return new RedirectResponse($this->generateUrl('_demo'));
+        }
+	*/
+        return array('form' => $form);
+    }
+
+
+
 }

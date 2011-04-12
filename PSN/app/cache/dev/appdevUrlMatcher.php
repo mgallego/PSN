@@ -143,6 +143,16 @@ class appdevUrlMatcher extends Symfony\Component\Routing\Matcher\UrlMatcher
             return array_merge($this->mergeDefaults(array(), array (  '_controller' => 'PSN\\MainBundle\\Controller\\DefaultController::contactAction',)), array('_route' => '_demo_contact'));
         }
 
+        // _demo_create_user
+        if ($pathinfo === '/demo/createUser') {
+            return array_merge($this->mergeDefaults(array(), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::CreateUserAction',)), array('_route' => '_demo_create_user'));
+        }
+
+        // _demo_create
+        if ($pathinfo === '/demo/create') {
+            return array_merge($this->mergeDefaults(array(), array (  '_controller' => 'Acme\\DemoBundle\\Controller\\DemoController::createAction',)), array('_route' => '_demo_create'));
+        }
+
         // _psn
         if (rtrim($pathinfo, '/') === '/psn') {
             if (substr($pathinfo, -1) !== '/') {

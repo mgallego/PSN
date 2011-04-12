@@ -51,7 +51,7 @@ doctrine:
             default:
                 mappings:
                     AcmeDemoBundle: ~
-                    PSNMainBundle: ~
+#                    PSNMainBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
