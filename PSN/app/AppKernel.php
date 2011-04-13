@@ -18,7 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Acme\DemoBundle\AcmeDemoBundle(),
-	    	new PSN\MainBundle\PSNMainBundle(),         
+	    new PSN\MainBundle\PSNMainBundle(),         
+	    new FOS\UserBundle\FOSUserBundle(),
 
         );
 
