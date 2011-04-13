@@ -9,6 +9,7 @@ use Acme\DemoBundle\Form\ContactForm;
 use Acme\DemoBundle\Entity\User;
 use Acme\DemoBundle\Form\CreateUserForm;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
+use Acme\DemoBundle\Create\CreateRequest;
 
 
 class DemoController extends Controller
@@ -102,17 +103,17 @@ class DemoController extends Controller
 	$em = $this->get('doctrine.orm.entity_manager');
 
 	$user = new User();
-	$user->setFirstName($arrayuser['first_name']);
-	$user->setLastName($arrayuser['last_name']);
+	$user->setFirstName($arrayuser['firstName']);
+	$user->setLastName($arrayuser['lastName']);
 	$user->setUserName($arrayuser['username']);
 	$user->setEmail($arrayuser['email']);
 	$user->setSalt(md5(time()));
 
 
-	//	  $user->setPassword($arrayuser['userpass']);
+	//	  $user->setPassword($arrayuser['password']);
 
 	$encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
-	$password = $encoder->encodePassword($arrayuser['userpass'], $user->getSalt());
+	$password = $encoder->encodePassword($arrayuser['password'], $user->getSalt());
 
 	$user->setPassword($password);
 
@@ -134,9 +135,18 @@ class DemoController extends Controller
      */
     public function createAction()
     {
+
+      $user = new User();
+      $createRequest = new CreateRequest();
+
         $form = CreateUserForm::create($this->get('form.context'), 'createuser');
 
-        $form->bind($this->container->get('request'), $form);
+	$validator = $this->get('validator');
+
+        $form->bind($this->container->get('request'), $createRequest);//$user);
+
+
+
 	/* if ($form->isValid()) {
             $form->send($this->get('mailer'));
 

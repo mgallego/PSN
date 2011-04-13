@@ -54,6 +54,7 @@ class User implements UserInterface
      * @orm:Column(type="string", length="255")
      *
      * @var string password
+     * @validation:MaxLength(5)
      */
     protected $password;
 

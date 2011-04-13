@@ -76,39 +76,39 @@ class __TwigTemplate_1f0e0f5b8bd16a3aab3caed65f0168e6 extends Twig_Template
         ";
         // line 26
         echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '26'), "username", array(), "any", false, 26));
-        echo "
-        
+        echo "        
         <br>
         
+
         ";
         // line 30
-        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, 'form', '30'), "userpass", array(), "any", false, 30), "Password");
+        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, 'form', '30'), "password", array(), "any", false, 30), "Password");
         echo "
         ";
         // line 31
-        echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '31'), "userpass", array(), "any", false, 31));
+        echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '31'), "password", array(), "any", false, 31));
         echo "
         
         <br>
       
 \t";
         // line 35
-        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, 'form', '35'), "first_name", array(), "any", false, 35), "nombre");
+        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, 'form', '35'), "firstName", array(), "any", false, 35), "nombre");
         echo "
 \t";
         // line 36
-        echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '36'), "first_name", array(), "any", false, 36));
+        echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '36'), "firstName", array(), "any", false, 36));
         echo "
 
 \t<br>
 
 \t";
         // line 40
-        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, 'form', '40'), "last_name", array(), "any", false, 40), "apellidos");
+        echo $this->env->getExtension('form')->renderLabel($this->getAttribute($this->getContext($context, 'form', '40'), "lastName", array(), "any", false, 40), "apellidos");
         echo "
 \t";
         // line 41
-        echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '41'), "last_name", array(), "any", false, 41));
+        echo $this->env->getExtension('form')->renderField($this->getAttribute($this->getContext($context, 'form', '41'), "lastName", array(), "any", false, 41));
         echo "
   
 \t<br>
