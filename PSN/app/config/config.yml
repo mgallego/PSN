@@ -50,8 +50,7 @@ doctrine:
         entity_managers:
             default:
                 mappings:
-                    AcmeDemoBundle: ~
-#                    PSNMainBundle: ~
+                    SFMPicmntBundle: ~
                     FOSUserBundle: ~
 
 # Swiftmailer Configuration
@@ -70,7 +69,7 @@ fos_user:
     firewall_name: main
     class:
         model:
-            user: Acme\DemoBundle\Entity\User
+            user: SFM\PicmntBundle\Entity\User
         form:
             user: FOS\UserBundle\Form\UserForm
 

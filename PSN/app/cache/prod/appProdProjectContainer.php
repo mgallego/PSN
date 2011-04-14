@@ -16,10 +16,6 @@ class appProdProjectContainer extends Container
         $this->scopes = array('request' => 'container');
         $this->scopeChildren = array('request' => array());
     }
-    protected function getAcme_Demo_ListenerService()
-    {
-        return $this->services['acme.demo.listener'] = new \Acme\DemoBundle\ControllerListener($this->get('twig.extension.acme.demo'));
-    }
     protected function getAnnotations_Cache_ArrayService()
     {
         return new \Doctrine\Common\Cache\ArrayCache();
@@ -46,20 +42,19 @@ class appProdProjectContainer extends Container
     protected function getAssetic_AssetManagerService()
     {
         $a = $this->get('templating.loader');
-        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/home/moises/Desarrollo/PR11/PSN/app/cache/prod/assetic/config'), false)));
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/FrameworkBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/SecurityBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/TwigBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/MonologBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/SwiftmailerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/DoctrineBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/bundles/JMS/SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/AcmeDemoBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AcmeDemoBundle', '/home/moises/Desarrollo/PR11/PSN/src/Acme/DemoBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'PSNMainBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/PSNMainBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'PSNMainBundle', '/home/moises/Desarrollo/PR11/PSN/src/PSN/MainBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/home/moises/Desarrollo/PR11/PSN/app/Resources/FOSUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/home/moises/Desarrollo/PR11/PSN/vendor/bundles/FOS/UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', '/home/moises/Desarrollo/PR11/PSN/app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
+        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/home/moises/Desarrollo/PSN/PSN/app/cache/prod/assetic/config'), false)));
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/FrameworkBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FrameworkBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/SecurityBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SecurityBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/TwigBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'TwigBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/MonologBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'MonologBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/MonologBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/SwiftmailerBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SwiftmailerBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/SwiftmailerBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/DoctrineBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'DoctrineBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/DoctrineBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/AsseticBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'AsseticBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/AsseticBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/SensioFrameworkExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SensioFrameworkExtraBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/bundles/Sensio/Bundle/FrameworkExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/JMSSecurityExtraBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'JMSSecurityExtraBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/bundles/JMS/SecurityExtraBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SFMPicmntBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/SFMPicmntBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'SFMPicmntBundle', '/home/moises/Desarrollo/PSN/PSN/src/SFM/PicmntBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Assetic\Factory\Resource\CoalescingDirectoryResource(array(0 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/home/moises/Desarrollo/PSN/PSN/app/Resources/FOSUserBundle/views', '/^[^.]+\\.[^.]+\\.twig$/'), 1 => new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, 'FOSUserBundle', '/home/moises/Desarrollo/PSN/PSN/vendor/bundles/FOS/UserBundle/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'))), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($a, '', '/home/moises/Desarrollo/PSN/PSN/app/Resources/views', '/^[^.]+\\.[^.]+\\.twig$/'), 'twig');
         return $instance;
     }
     protected function getAssetic_Filter_CssrewriteService()
@@ -77,7 +72,7 @@ class appProdProjectContainer extends Container
     protected function getCacheWarmerService()
     {
         $a = $this->get('assetic.asset_manager');
-        return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($a), 1 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\ClassMapCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router.real')), 3 => new \Symfony\Bundle\DoctrineBundle\CacheWarmer\ProxyCacheWarmer($this), 4 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetWriterCacheWarmer($a, new \Assetic\AssetWriter('/home/moises/Desarrollo/PR11/PSN/app/../web'))));
+        return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($a), 1 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\ClassMapCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router.real')), 3 => new \Symfony\Bundle\DoctrineBundle\CacheWarmer\ProxyCacheWarmer($this), 4 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetWriterCacheWarmer($a, new \Assetic\AssetWriter('/home/moises/Desarrollo/PSN/PSN/app/../web'))));
     }
     protected function getConverter_Doctrine_Mongodb_OdmService()
     {
@@ -109,23 +104,23 @@ class appProdProjectContainer extends Container
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
         $a = new \Doctrine\Common\Cache\ArrayCache();
-        $a->setNamespace('sf2orm_default_86a6ae533746aecb08b85c26358365fb');
+        $a->setNamespace('sf2orm_default_d980ee430d0a904d0cc99cc616b8b9b8');
         $b = new \Doctrine\Common\Cache\ArrayCache();
-        $b->setNamespace('sf2orm_default_86a6ae533746aecb08b85c26358365fb');
+        $b->setNamespace('sf2orm_default_d980ee430d0a904d0cc99cc616b8b9b8');
         $c = new \Doctrine\Common\Cache\ArrayCache();
-        $c->setNamespace('sf2orm_default_86a6ae533746aecb08b85c26358365fb');
+        $c->setNamespace('sf2orm_default_d980ee430d0a904d0cc99cc616b8b9b8');
         $d = new \Doctrine\Common\Annotations\AnnotationReader();
         $d->setAnnotationNamespaceAlias('Doctrine\\ORM\\Mapping\\', 'orm');
         $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
-        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, array(0 => '/home/moises/Desarrollo/PR11/PSN/src/Acme/DemoBundle/Entity')), 'Acme\\DemoBundle\\Entity');
-        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(array(0 => '/home/moises/Desarrollo/PR11/PSN/vendor/bundles/FOS/UserBundle/Resources/config/doctrine/metadata/orm')), 'FOS\\UserBundle\\Entity');
+        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($d, array(0 => '/home/moises/Desarrollo/PSN/PSN/src/SFM/PicmntBundle/Entity')), 'SFM\\PicmntBundle\\Entity');
+        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(array(0 => '/home/moises/Desarrollo/PSN/PSN/vendor/bundles/FOS/UserBundle/Resources/config/doctrine/metadata/orm')), 'FOS\\UserBundle\\Entity');
         $f = new \Doctrine\ORM\Configuration();
-        $f->setEntityNamespaces(array('AcmeDemoBundle' => 'Acme\\DemoBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity'));
+        $f->setEntityNamespaces(array('SFMPicmntBundle' => 'SFM\\PicmntBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity'));
         $f->setMetadataCacheImpl($a);
         $f->setQueryCacheImpl($b);
         $f->setResultCacheImpl($c);
         $f->setMetadataDriverImpl($e);
-        $f->setProxyDir('/home/moises/Desarrollo/PR11/PSN/app/cache/prod/doctrine/orm/Proxies');
+        $f->setProxyDir('/home/moises/Desarrollo/PSN/PSN/app/cache/prod/doctrine/orm/Proxies');
         $f->setProxyNamespace('Proxies');
         $f->setAutoGenerateProxyClasses(false);
         $f->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
@@ -149,7 +144,6 @@ class appProdProjectContainer extends Container
         $instance->addListenerService('onCoreView', 'view.template_annotation', 0);
         $instance->addListenerService('onCoreResponse', 'cache.annotation', 0);
         $instance->addListenerService('onCoreController', 'security.extra.controller_listener', -255);
-        $instance->addListenerService('onCoreController', 'acme.demo.listener', 0);
         $instance->addListenerService('onSecurityInteractiveLogin', 'fos_user.security.interactive_login_listener', 0);
         return $instance;
     }
@@ -194,7 +188,7 @@ class appProdProjectContainer extends Container
         if (!isset($this->scopedServices['request'])) {
             throw new InactiveScopeException('fos_user.form.change_password', 'request');
         }
-        $this->services['fos_user.form.change_password'] = $this->scopedServices['request']['fos_user.form.change_password'] = $instance = call_user_func(array('FOS\\UserBundle\\Form\\ChangePasswordForm', 'create'), $this->get('form.context'), 'fos_user_change_password_form', array('theme' => 'TwigBundle::form.html.twig', 'validation_groups' => array(0 => 'ChangePassword')));
+        $this->services['fos_user.form.change_password'] = $this->scopedServices['request']['fos_user.form.change_password'] = $instance = call_user_func(array('FOS\\UserBundle\\Form\\ChangePasswordForm', 'create'), $this->get('form.context'), 'fos_user_change_password_form', array('theme' => 'FOSUserBundleaa::layout.html.twig', 'validation_groups' => array(0 => 'ChangePassword')));
         $instance->setRequest($this->get('request'));
         $instance->setUserManager($this->get('fos_user.user_manager'));
         return $instance;
@@ -204,7 +198,7 @@ class appProdProjectContainer extends Container
         if (!isset($this->scopedServices['request'])) {
             throw new InactiveScopeException('fos_user.form.reset_password', 'request');
         }
-        $this->services['fos_user.form.reset_password'] = $this->scopedServices['request']['fos_user.form.reset_password'] = $instance = call_user_func(array('FOS\\UserBundle\\Form\\ResetPasswordForm', 'create'), $this->get('form.context'), 'fos_user_reset_password_form', array('theme' => 'TwigBundle::form.html.twig', 'validation_groups' => array(0 => 'ResetPassword')));
+        $this->services['fos_user.form.reset_password'] = $this->scopedServices['request']['fos_user.form.reset_password'] = $instance = call_user_func(array('FOS\\UserBundle\\Form\\ResetPasswordForm', 'create'), $this->get('form.context'), 'fos_user_reset_password_form', array('theme' => 'FOSUserBundleaa::layout.html.twig', 'validation_groups' => array(0 => 'ResetPassword')));
         $instance->setRequest($this->get('request'));
         $instance->setUserManager($this->get('fos_user.user_manager'));
         return $instance;
@@ -214,7 +208,7 @@ class appProdProjectContainer extends Container
         if (!isset($this->scopedServices['request'])) {
             throw new InactiveScopeException('fos_user.form.user', 'request');
         }
-        $this->services['fos_user.form.user'] = $this->scopedServices['request']['fos_user.form.user'] = $instance = call_user_func(array('FOS\\UserBundle\\Form\\UserForm', 'create'), $this->get('form.context'), 'fos_user_user_form', array('theme' => 'TwigBundle::form.html.twig', 'validation_groups' => array(0 => 'Registration')));
+        $this->services['fos_user.form.user'] = $this->scopedServices['request']['fos_user.form.user'] = $instance = call_user_func(array('FOS\\UserBundle\\Form\\UserForm', 'create'), $this->get('form.context'), 'fos_user_user_form', array('theme' => 'FOSUserBundleaa::layout.html.twig', 'validation_groups' => array(0 => 'Registration')));
         $instance->setRequest($this->get('request'));
         $instance->setUserManager($this->get('fos_user.user_manager'));
         return $instance;
@@ -225,7 +219,7 @@ class appProdProjectContainer extends Container
     }
     protected function getFosUser_UserManagerService()
     {
-        return $this->services['fos_user.user_manager'] = new \FOS\UserBundle\Entity\UserManager($this->get('fos_user.encoder_factory'), 'sha512', $this->get('fos_user.util.username_canonicalizer'), $this->get('fos_user.util.email_canonicalizer'), $this->get('doctrine.orm.default_entity_manager'), 'Acme\\DemoBundle\\Entity\\User');
+        return $this->services['fos_user.user_manager'] = new \FOS\UserBundle\Entity\UserManager($this->get('fos_user.encoder_factory'), 'sha512', $this->get('fos_user.util.username_canonicalizer'), $this->get('fos_user.util.email_canonicalizer'), $this->get('doctrine.orm.default_entity_manager'), 'SFM\\PicmntBundle\\Entity\\User');
     }
     protected function getFosUser_Util_EmailCanonicalizerService()
     {
@@ -255,7 +249,7 @@ class appProdProjectContainer extends Container
     }
     protected function getMailerService()
     {
-        require_once '/home/moises/Desarrollo/PR11/PSN/vendor/swiftmailer/lib/swift_init.php';
+        require_once '/home/moises/Desarrollo/PSN/PSN/vendor/swiftmailer/lib/swift_init.php';
         return $this->services['mailer'] = new \Swift_Mailer($this->get('swiftmailer.transport'));
     }
     protected function getMonolog_Handler_MainService()
@@ -264,7 +258,7 @@ class appProdProjectContainer extends Container
     }
     protected function getMonolog_Handler_NestedService()
     {
-        return $this->services['monolog.handler.nested'] = new \Monolog\Handler\StreamHandler('/home/moises/Desarrollo/PR11/PSN/app/logs/prod.log', 100, false);
+        return $this->services['monolog.handler.nested'] = new \Monolog\Handler\StreamHandler('/home/moises/Desarrollo/PSN/PSN/app/logs/prod.log', 100, false);
     }
     protected function getMonolog_LoggerService()
     {
@@ -313,11 +307,11 @@ class appProdProjectContainer extends Container
     }
     protected function getRouter_CachedService()
     {
-        return $this->services['router.cached'] = new \Symfony\Bundle\FrameworkBundle\Routing\CachedRouter('/home/moises/Desarrollo/PR11/PSN/app/cache/prod', 'appprodUrlMatcher', 'appprodUrlGenerator');
+        return $this->services['router.cached'] = new \Symfony\Bundle\FrameworkBundle\Routing\CachedRouter('/home/moises/Desarrollo/PSN/PSN/app/cache/prod', 'appprodUrlMatcher', 'appprodUrlGenerator');
     }
     protected function getRouter_RealService()
     {
-        return $this->services['router.real'] = new \Symfony\Component\Routing\Router(new \Symfony\Bundle\FrameworkBundle\Routing\LazyLoader($this, 'routing.loader.real'), '/home/moises/Desarrollo/PR11/PSN/app/config/routing.yml', array('cache_dir' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod', 'debug' => false, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appprodUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appprodUrlMatcher', 'resource_type' => ''));
+        return $this->services['router.real'] = new \Symfony\Component\Routing\Router(new \Symfony\Bundle\FrameworkBundle\Routing\LazyLoader($this, 'routing.loader.real'), '/home/moises/Desarrollo/PSN/PSN/app/config/routing.yml', array('cache_dir' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod', 'debug' => false, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appprodUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appprodUrlMatcher', 'resource_type' => ''));
     }
     protected function getRouting_Loader_AnnotClassService()
     {
@@ -373,8 +367,38 @@ class appProdProjectContainer extends Container
         $b = $this->get('security.context');
         $c = $this->get('event_dispatcher');
         $d = $this->get('security.authentication.manager');
-        $e = new \Symfony\Component\Security\Http\AccessMap();
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_manager')), 'main', $a, $c), 2 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $d, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), 'main', array('login_path' => '/demo/login', 'check_path' => '/login_check', 'use_forward' => false, 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_page_id' => 'form_login', 'post_only' => true), NULL, NULL, $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '4da57060949eb', $a), 4 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $d, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), '/demo/login', false), NULL, NULL, $a));
+        $e = new \Symfony\Component\HttpFoundation\RequestMatcher('^/_wdt/');
+        $f = new \Symfony\Component\HttpFoundation\RequestMatcher('^/_profiler/');
+        $g = new \Symfony\Component\HttpFoundation\RequestMatcher('^/login$');
+        $h = new \Symfony\Component\HttpFoundation\RequestMatcher('^/login_check$');
+        $i = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/new$');
+        $j = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/check-confirmation-email$');
+        $k = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/confirm/');
+        $l = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/confirmed$');
+        $m = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/request-reset-password$');
+        $n = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/send-resetting-email$');
+        $o = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/check-resetting-email$');
+        $p = new \Symfony\Component\HttpFoundation\RequestMatcher('^/user/reset-password/');
+        $q = new \Symfony\Component\HttpFoundation\RequestMatcher('^/admin/');
+        $r = new \Symfony\Component\HttpFoundation\RequestMatcher('^/demo/secured/.*');
+        $s = new \Symfony\Component\Security\Http\AccessMap();
+        $s->add($e, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($f, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($g, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($j, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($k, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($l, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($m, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($n, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($o, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($p, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $s->add($q, array(0 => 'ROLE_ADMIN'), NULL);
+        $s->add($r, array(0 => 'ROLE_USER'), NULL);
+        $t = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, '/logout', '/', NULL);
+        $t->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($s, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_manager')), 'main', $a, $c), 2 => $t, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $d, new \Symfony\Component\Security\Http\Session\SessionAuthenticationStrategy('migrate'), 'main', array('login_path' => '/login', 'check_path' => '/login_check', 'use_forward' => false, 'always_use_default_target_path' => false, 'default_target_path' => '/', 'target_path_parameter' => '_target_path', 'use_referer' => false, 'failure_path' => NULL, 'failure_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_page_id' => 'form_login', 'post_only' => true), NULL, NULL, $a, $c), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '4da6f9c4e8b12', $a), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $s, $d, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($this->get('http_kernel'), '/login', false), NULL, NULL, $a));
     }
     protected function getSecurity_Rememberme_ResponseListenerService()
     {
@@ -419,7 +443,7 @@ class appProdProjectContainer extends Container
     }
     protected function getTemplating_Helper_CodeService()
     {
-        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper('', '/home/moises/Desarrollo/PR11/PSN/app');
+        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper('', '/home/moises/Desarrollo/PSN/PSN/app');
     }
     protected function getTemplating_Helper_FormService()
     {
@@ -478,11 +502,11 @@ class appProdProjectContainer extends Container
     }
     protected function getTranslator_RealService()
     {
-        return $this->services['translator.real'] = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('cache_dir' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod/translations', 'debug' => false), $this->get('session'));
+        return $this->services['translator.real'] = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('cache_dir' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod/translations', 'debug' => false), $this->get('session'));
     }
     protected function getTwigService()
     {
-        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => false, 'strict_variables' => false, 'cache' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod/twig', 'charset' => 'UTF-8'));
+        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => false, 'strict_variables' => false, 'cache' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod/twig', 'charset' => 'UTF-8'));
         $instance->addExtension(new \Symfony\Bundle\SecurityBundle\Twig\Extension\SecurityExtension($this->get('security.context')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator')));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\TemplatingExtension($this));
@@ -490,7 +514,6 @@ class appProdProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\FormExtension(array(0 => 'TwigBundle::form.html.twig')));
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\StaticExtension($this->get('assetic.asset_factory'), false));
-        $instance->addExtension($this->get('twig.extension.acme.demo'));
         return $instance;
     }
     protected function getTwig_LoaderService()
@@ -527,7 +550,7 @@ class appProdProjectContainer extends Container
     }
     protected function getAssetic_AssetFactoryService()
     {
-        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), '/home/moises/Desarrollo/PR11/PSN/app/../web', false);
+        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), '/home/moises/Desarrollo/PSN/PSN/app/../web', false);
         $instance->setFilterManager($this->get('assetic.filter_manager'));
         return $instance;
     }
@@ -549,7 +572,7 @@ class appProdProjectContainer extends Container
     }
     protected function getSecurity_Authentication_ManagerService()
     {
-        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), new \Symfony\Component\Security\Core\User\UserChecker(), 'main', $this->get('fos_user.encoder_factory')), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4da57060949eb')));
+        return $this->services['security.authentication.manager'] = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_manager'), new \Symfony\Component\Security\Core\User\UserChecker(), 'main', $this->get('fos_user.encoder_factory')), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('4da6f9c4e8b12')));
     }
     protected function getSecurity_Authentication_TrustResolverService()
     {
@@ -557,19 +580,15 @@ class appProdProjectContainer extends Container
     }
     protected function getTemplating_LocatorService()
     {
-        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/home/moises/Desarrollo/PR11/PSN/app/Resources');
+        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/home/moises/Desarrollo/PSN/PSN/app/Resources');
     }
     protected function getTranslator_SelectorService()
     {
         return $this->services['translator.selector'] = new \Symfony\Component\Translation\MessageSelector();
     }
-    protected function getTwig_Extension_Acme_DemoService()
-    {
-        return $this->services['twig.extension.acme.demo'] = new \Acme\DemoBundle\Twig\Extension\DemoExtension($this->get('twig.loader'));
-    }
     protected function getValidator_Mapping_ClassMetadataFactoryService()
     {
-        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader(array('assert' => 'Symfony\\Component\\Validator\\Constraints\\')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/home/moises/Desarrollo/PR11/PSN/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/DependencyInjection/../../../Component/Form/Resources/config/validation.xml', 1 => '/home/moises/Desarrollo/PR11/PSN/vendor/bundles/FOS/UserBundle/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array()))), NULL);
+        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader(array('assert' => 'Symfony\\Component\\Validator\\Constraints\\')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/home/moises/Desarrollo/PSN/PSN/vendor/symfony/src/Symfony/Bundle/FrameworkBundle/DependencyInjection/../../../Component/Form/Resources/config/validation.xml', 1 => '/home/moises/Desarrollo/PSN/PSN/vendor/bundles/FOS/UserBundle/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array()))), NULL);
     }
     public function getParameter($name)
     {
@@ -590,12 +609,12 @@ class appProdProjectContainer extends Container
     protected function getDefaultParameters()
     {
         return array(
-            'kernel.root_dir' => '/home/moises/Desarrollo/PR11/PSN/app',
+            'kernel.root_dir' => '/home/moises/Desarrollo/PSN/PSN/app',
             'kernel.environment' => 'prod',
             'kernel.debug' => false,
             'kernel.name' => 'app',
-            'kernel.cache_dir' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod',
-            'kernel.logs_dir' => '/home/moises/Desarrollo/PR11/PSN/app/logs',
+            'kernel.cache_dir' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod',
+            'kernel.logs_dir' => '/home/moises/Desarrollo/PSN/PSN/app/logs',
             'kernel.bundles' => array(
                 'FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle',
                 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle',
@@ -606,8 +625,7 @@ class appProdProjectContainer extends Container
                 'AsseticBundle' => 'Symfony\\Bundle\\AsseticBundle\\AsseticBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'JMSSecurityExtraBundle' => 'JMS\\SecurityExtraBundle\\JMSSecurityExtraBundle',
-                'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
-                'PSNMainBundle' => 'PSN\\MainBundle\\PSNMainBundle',
+                'SFMPicmntBundle' => 'SFM\\PicmntBundle\\SFMPicmntBundle',
                 'FOSUserBundle' => 'FOS\\UserBundle\\FOSUserBundle',
             ),
             'kernel.charset' => 'UTF-8',
@@ -668,7 +686,7 @@ class appProdProjectContainer extends Container
             'router.options.matcher.cache_class' => 'appprodUrlMatcher',
             'router.options.generator.cache_class' => 'appprodUrlGenerator',
             'router.options.resource_type' => '',
-            'routing.resource' => '/home/moises/Desarrollo/PR11/PSN/app/config/routing.yml',
+            'routing.resource' => '/home/moises/Desarrollo/PSN/PSN/app/config/routing.yml',
             'session.class' => 'Symfony\\Component\\HttpFoundation\\Session',
             'session.storage.native.class' => 'Symfony\\Component\\HttpFoundation\\SessionStorage\\NativeSessionStorage',
             'session.storage.native.options' => array(
@@ -779,7 +797,7 @@ class appProdProjectContainer extends Container
             'twig.options' => array(
                 'debug' => false,
                 'strict_variables' => false,
-                'cache' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod/twig',
+                'cache' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod/twig',
                 'charset' => 'UTF-8',
             ),
             'monolog.logger.class' => 'Symfony\\Bundle\\MonologBundle\\Logger\\Logger',
@@ -827,7 +845,7 @@ class appProdProjectContainer extends Container
                 0 => 'default',
             ),
             'doctrine.orm.proxy_namespace' => 'Proxies',
-            'doctrine.orm.proxy_dir' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod/doctrine/orm/Proxies',
+            'doctrine.orm.proxy_dir' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod/doctrine/orm/Proxies',
             'doctrine.orm.cache.array_class' => 'Doctrine\\Common\\Cache\\ArrayCache',
             'doctrine.orm.cache.apc_class' => 'Doctrine\\Common\\Cache\\ApcCache',
             'doctrine.orm.cache.memcache_class' => 'Doctrine\\Common\\Cache\\MemcacheCache',
@@ -855,7 +873,7 @@ class appProdProjectContainer extends Container
             'assetic.filter_manager.class' => 'Symfony\\Bundle\\AsseticBundle\\FilterManager',
             'assetic.node.paths' => array(
             ),
-            'assetic.cache_dir' => '/home/moises/Desarrollo/PR11/PSN/app/cache/prod/assetic',
+            'assetic.cache_dir' => '/home/moises/Desarrollo/PSN/PSN/app/cache/prod/assetic',
             'assetic.twig_extension.dynamic.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\DynamicExtension',
             'assetic.twig_extension.static.class' => 'Symfony\\Bundle\\AsseticBundle\\Twig\\StaticExtension',
             'assetic.twig_formula_loader.class' => 'Assetic\\Extension\\Twig\\TwigFormulaLoader',
@@ -864,8 +882,8 @@ class appProdProjectContainer extends Container
             'assetic.php_formula_loader.class' => 'Symfony\\Bundle\\AsseticBundle\\Factory\\Loader\\AsseticHelperFormulaLoader',
             'assetic.debug' => false,
             'assetic.use_controller' => false,
-            'assetic.read_from' => '/home/moises/Desarrollo/PR11/PSN/app/../web',
-            'assetic.write_to' => '/home/moises/Desarrollo/PR11/PSN/app/../web',
+            'assetic.read_from' => '/home/moises/Desarrollo/PSN/PSN/app/../web',
+            'assetic.write_to' => '/home/moises/Desarrollo/PSN/PSN/app/../web',
             'assetic.java.bin' => '/usr/bin/java',
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.sass.bin' => '/usr/bin/sass',
@@ -906,8 +924,8 @@ class appProdProjectContainer extends Container
             'fos_user.encoder.algorithm' => 'sha512',
             'fos_user.encoder.encode_as_base64' => false,
             'fos_user.encoder.iterations' => 1,
+            'fos_user.template.theme' => 'FOSUserBundleaa::layout.html.twig',
             'fos_user.template.engine' => 'twig',
-            'fos_user.template.theme' => 'TwigBundle::form.html.twig',
             'fos_user.form.user.name' => 'fos_user_user_form',
             'fos_user.form.change_password.name' => 'fos_user_change_password_form',
             'fos_user.form.reset_password.name' => 'fos_user_reset_password_form',
@@ -920,7 +938,7 @@ class appProdProjectContainer extends Container
             'fos_user.form.reset_password.validation_groups' => array(
                 0 => 'ResetPassword',
             ),
-            'fos_user.model.user.class' => 'Acme\\DemoBundle\\Entity\\User',
+            'fos_user.model.user.class' => 'SFM\\PicmntBundle\\Entity\\User',
             'fos_user.form.user.class' => 'FOS\\UserBundle\\Form\\UserForm',
             'fos_user.form.change_password.class' => 'FOS\\UserBundle\\Form\\ChangePasswordForm',
             'fos_user.form.reset_password.class' => 'FOS\\UserBundle\\Form\\ResetPasswordForm',
@@ -979,44 +997,45 @@ class appProdProjectContainer extends Container
                 41 => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
                 42 => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller',
                 43 => 'Symfony\\Bundle\\FrameworkBundle\\ContainerAwareEventDispatcher',
-                44 => 'Symfony\\Component\\Security\\Http\\Firewall',
-                45 => 'Symfony\\Component\\Security\\Http\\FirewallMapInterface',
-                46 => 'Symfony\\Component\\Security\\Core\\SecurityContext',
-                47 => 'Symfony\\Component\\Security\\Core\\SecurityContextInterface',
-                48 => 'Symfony\\Component\\Security\\Core\\User\\UserProviderInterface',
-                49 => 'Symfony\\Component\\Security\\Core\\Authentication\\AuthenticationProviderManager',
-                50 => 'Symfony\\Component\\Security\\Core\\Authentication\\AuthenticationManagerInterface',
-                51 => 'Symfony\\Component\\Security\\Core\\Authorization\\AccessDecisionManager',
-                52 => 'Symfony\\Component\\Security\\Core\\Authorization\\AccessDecisionManagerInterface',
-                53 => 'Symfony\\Component\\Security\\Core\\Authorization\\Voter\\VoterInterface',
-                54 => 'Symfony\\Bundle\\SecurityBundle\\Security\\FirewallMap',
-                55 => 'Symfony\\Bundle\\SecurityBundle\\Security\\FirewallContext',
-                56 => 'Symfony\\Component\\HttpFoundation\\RequestMatcher',
-                57 => 'Symfony\\Component\\HttpFoundation\\RequestMatcherInterface',
-                58 => 'Twig_Environment',
-                59 => 'Twig_ExtensionInterface',
-                60 => 'Twig_Extension',
-                61 => 'Twig_Extension_Core',
-                62 => 'Twig_Extension_Escaper',
-                63 => 'Twig_Extension_Optimizer',
-                64 => 'Twig_LoaderInterface',
-                65 => 'Twig_Markup',
-                66 => 'Twig_TemplateInterface',
-                67 => 'Twig_Template',
-                68 => 'Monolog\\Formatter\\FormatterInterface',
-                69 => 'Monolog\\Formatter\\LineFormatter',
-                70 => 'Monolog\\Handler\\HandlerInterface',
-                71 => 'Monolog\\Handler\\AbstractHandler',
-                72 => 'Monolog\\Handler\\StreamHandler',
-                73 => 'Monolog\\Handler\\FingersCrossedHandler',
-                74 => 'Monolog\\Handler\\TestHandler',
-                75 => 'Monolog\\Logger',
-                76 => 'Symfony\\Bundle\\MonologBundle\\Logger\\Logger',
-                77 => 'Symfony\\Bundle\\MonologBundle\\Logger\\DebugHandler',
-                78 => 'JMS\\SecurityExtraBundle\\Controller\\ControllerListener',
-                79 => 'JMS\\SecurityExtraBundle\\Mapping\\Driver\\AnnotationParser',
-                80 => 'JMS\\SecurityExtraBundle\\Mapping\\Driver\\AnnotationConverter',
-                81 => 'JMS\\SecurityExtraBundle\\Security\\Authorization\\Interception\\MethodInvocation',
+                44 => 'Symfony\\Component\\Security\\Http\\AccessMap',
+                45 => 'Symfony\\Component\\Security\\Http\\Firewall',
+                46 => 'Symfony\\Component\\Security\\Http\\FirewallMapInterface',
+                47 => 'Symfony\\Component\\Security\\Core\\SecurityContext',
+                48 => 'Symfony\\Component\\Security\\Core\\SecurityContextInterface',
+                49 => 'Symfony\\Component\\Security\\Core\\User\\UserProviderInterface',
+                50 => 'Symfony\\Component\\Security\\Core\\Authentication\\AuthenticationProviderManager',
+                51 => 'Symfony\\Component\\Security\\Core\\Authentication\\AuthenticationManagerInterface',
+                52 => 'Symfony\\Component\\Security\\Core\\Authorization\\AccessDecisionManager',
+                53 => 'Symfony\\Component\\Security\\Core\\Authorization\\AccessDecisionManagerInterface',
+                54 => 'Symfony\\Component\\Security\\Core\\Authorization\\Voter\\VoterInterface',
+                55 => 'Symfony\\Bundle\\SecurityBundle\\Security\\FirewallMap',
+                56 => 'Symfony\\Bundle\\SecurityBundle\\Security\\FirewallContext',
+                57 => 'Symfony\\Component\\HttpFoundation\\RequestMatcher',
+                58 => 'Symfony\\Component\\HttpFoundation\\RequestMatcherInterface',
+                59 => 'Twig_Environment',
+                60 => 'Twig_ExtensionInterface',
+                61 => 'Twig_Extension',
+                62 => 'Twig_Extension_Core',
+                63 => 'Twig_Extension_Escaper',
+                64 => 'Twig_Extension_Optimizer',
+                65 => 'Twig_LoaderInterface',
+                66 => 'Twig_Markup',
+                67 => 'Twig_TemplateInterface',
+                68 => 'Twig_Template',
+                69 => 'Monolog\\Formatter\\FormatterInterface',
+                70 => 'Monolog\\Formatter\\LineFormatter',
+                71 => 'Monolog\\Handler\\HandlerInterface',
+                72 => 'Monolog\\Handler\\AbstractHandler',
+                73 => 'Monolog\\Handler\\StreamHandler',
+                74 => 'Monolog\\Handler\\FingersCrossedHandler',
+                75 => 'Monolog\\Handler\\TestHandler',
+                76 => 'Monolog\\Logger',
+                77 => 'Symfony\\Bundle\\MonologBundle\\Logger\\Logger',
+                78 => 'Symfony\\Bundle\\MonologBundle\\Logger\\DebugHandler',
+                79 => 'JMS\\SecurityExtraBundle\\Controller\\ControllerListener',
+                80 => 'JMS\\SecurityExtraBundle\\Mapping\\Driver\\AnnotationParser',
+                81 => 'JMS\\SecurityExtraBundle\\Mapping\\Driver\\AnnotationConverter',
+                82 => 'JMS\\SecurityExtraBundle\\Security\\Authorization\\Interception\\MethodInvocation',
             ),
             'kernel.autoload_classes' => array(
             ),
