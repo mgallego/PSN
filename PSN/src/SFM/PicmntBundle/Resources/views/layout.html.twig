@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}PSN Proyecto Sin Nombre{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('bundles/picmntbundle/stylesheets/reset.css')}}"
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('bundles/picmntbundle/stylesheets/960.css')}}">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('bundles/picmntbundle/stylesheets/text.css')}}">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('bundles/picmntbundle/stylesheets/layout.css')}}">
+  </head>
+  <body id="home">
+    <header>
+      <div class="container_12 clearfix">
+	<div class="grid_12">
+	  <h1>
+	    <a href="{{ path('home') }}" title="PSN">PSN</a>
+	  </h1>
+	</div>
+      </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
