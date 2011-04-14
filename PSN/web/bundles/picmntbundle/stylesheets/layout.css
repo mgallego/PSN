@@ -1,0 +1,519 @@
+@import url("components.css");
+
+body {
+	background: #F3F3F3;
+}
+
+/* Header
+----------------------------------------------------------------------------------------------------*/
+
+header {
+	background: #FFF;
+	background: url("../images/head-bkg.png");
+	padding: 5px 0;
+	height: 52px;
+}
+
+header h1 {
+	float: left;
+	margin: 0;
+}
+
+header h1 a {
+	background: url("../images/Picmnt-logo.png");
+	float: left;
+	height: 50px;
+	overflow: hidden;
+	text-indent: -900px;
+	width: 200px;
+}
+
+header nav {
+	float: right;
+	margin: 10px -50px 0;
+}
+
+header li {
+	float: left;
+}
+
+header nav a {
+	color: #FFF;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 4px 10px;
+	float: left;
+	overflow: visible;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+}
+
+header .especial {
+	color: #97d144;
+}
+
+header .currentLink {
+	background: #333;
+}
+
+header .inicial {
+	border-left: 1px solid #333;
+	margin-left: 25px;
+	padding-left: 10px;
+}
+
+header .secundario a {
+	color: #777;
+}
+
+/* Banner
+----------------------------------------------------------------------------------------------------*/
+
+#banner {
+	background: url("../images/purple-grid.gif") #FFF;
+	position: relative;
+	margin: 0;
+	overflow: hidden;
+}
+
+#banner .scissors {
+	background: url("../images/scissors.gif") 0 0 repeat-x;
+	height: 4px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+#banner h1 {
+	color: #FFF;
+	font-size: 47px;
+	padding: 40px 0 5px;
+	margin: 0;
+	line-height: 110%;
+}
+
+#banner p {
+	color: #D2AEF4;
+	font-size: 18px;
+	line-height: 23px;
+	margin: 0 0 60px;
+}
+
+#banner {
+	height: 300px;
+}
+
+/* `Content
+----------------------------------------------------------------------------------------------------*/
+
+#content {
+	padding: 50px 0;
+}
+
+#content a {
+	color: #563f6b;
+}
+
+#content p,
+#content ul {
+	color: #666;
+	font-size: 15px;
+}
+
+#content li {
+	margin-bottom: 20px;
+}
+
+#content .dotted {
+	background: url("../images/dots-h.gif") 0 center repeat-x;
+	text-align: center;
+	font-size: 33px;
+	color: #666;
+	margin-bottom: 60px;
+}
+
+#content .construccion {
+        text-align: center;
+}
+
+#content .dotted span {
+	background: #f3f3f3;
+	padding: 0 10px;
+}
+
+#content .shadow {
+	background: #FFF;
+	border: 1px solid #CCC;
+	padding: 20px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 0 1px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+
+#content .lined {
+	background-color: #FFF;
+	border: 1px solid #E0E0E0;
+	-moz-box-shadow: 0 0 0 rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 0 0 rgba(0,0,0,0.2);
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 5px;
+}
+
+#content #case-studies-wrapper {
+	height: 330px;
+}
+
+#content .case-studies {
+	margin-top: -104px;
+	position: absolute;
+}
+
+#content .case-studies p,
+#content .case-studies a {
+	text-align: center;
+}
+
+#content .case-studies p {
+	font-size: 19px;
+	padding: 0 40px 30px;
+}
+
+#content .case-studies .grooveshark {
+	background: url("../images/case-grooveshark.gif") center 30px no-repeat #FFF;
+	padding: 170px 0 0 0;
+}
+
+#content .case-studies .rdio {
+	background: url("../images/case-rdio.gif") center 50px no-repeat #FFF;
+	padding: 170px 0 0 0;
+}
+
+#content .case-studies .bonobos {
+	background: url("../images/case-bonobos.gif") center 70px no-repeat #FFF;
+	padding: 170px 0 0 0;
+}
+
+#content .client-wall p {
+	text-align: center;
+	font-style: italic;
+	margin: 15px 0 40px;
+}
+
+#content .client-wall .lined {
+	height: 100px;
+}
+
+#content .client-wall .signals {
+	background: url("../images/wall-37signals.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .twitter {
+	background: url("../images/wall-twitter.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .rdio {
+	background: url("../images/wall-rdio.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .directv {
+	background: url("../images/wall-directv.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .bonobos {
+	background: url("../images/wall-bonobos.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .disqus {
+	background: url("../images/wall-disqus.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .grooveshark {
+	background: url("../images/wall-grooveshark.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .vimeo {
+	background: url("../images/wall-vimeo.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .squarespace {
+	background: url("../images/wall-squarespace.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .remembermilk {
+	background: url("../images/wall-remembermilk.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .fitbit {
+	background: url("../images/wall-fitbit.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .wunderkinder {
+	background: url("../images/wall-6wunderkinder.gif") center center no-repeat #FFF;
+}
+
+#content .client-wall .grid_3 {
+	_overflow: hidden;
+}
+
+#content .contact li {
+	margin: 0;
+}
+
+#content .contact li span {
+	float: left;
+	width: 130px;
+	color: #000;
+	font-weight: bold;
+}
+
+#content .location strong {
+	display: block;
+	color: #000;
+}
+
+#content .contact .details {
+	margin-bottom: 40px;
+	color: #000;
+}
+
+#content .contact .resources {
+	margin-bottom: 50px;
+}
+
+#content .divider {
+	background: url("../images/dots-h.gif") 0 bottom repeat-x;
+	padding-bottom: 40px;
+	margin-bottom: 50px;
+	height: 1px;
+	overflow: hidden;
+}
+
+#content .quote {
+	color: #563F6B;
+	font-size: 20px;
+}
+
+#content .quote-name {
+	margin: 0;
+}
+
+#content .checks li {
+	background: url("../images/check-mark.gif") 0 3px no-repeat;
+	padding: 0 0 0 30px;
+}
+
+#content .stacked {
+	margin-top: 50px;
+}
+
+#content .feature .grid_6 {
+	_overflow: hidden;
+}
+
+#content .feature .lined {
+	float: right;
+	width: 373px;
+}
+
+#content .feature .lined img {
+	float: right;
+	margin: 10px;
+}
+
+#content .feature .first .lined {
+	float: left;
+}
+
+#content .feature strong {
+	display: block;
+	margin: 0 0 20px;
+}
+
+#content i {
+	background: #f1e1ff;
+	font-weight: bold;
+}
+
+#content .slide strong {
+	display: inline;
+}
+
+#content .slide h4 {
+	padding-top: 30px;
+}
+
+#content .subnav {
+	background-image: url("../images/dots-h.gif");
+	background-position: 0 top;
+	background-repeat: repeat-x;
+	padding-top: 1px;
+}
+
+#content .subnav li {
+	margin: 0;
+}
+
+#content .subnav li a {
+	background-image: url("../images/dots-h.gif");
+	background-position: 0 bottom;
+	background-repeat: repeat-x;
+	font-weight: bold;
+	display: block;
+	padding: 20px 9px;
+}
+
+#content .subnav li ul {
+	margin: 0;
+}
+
+#content .subnav li ul li a {
+	font-weight: normal;
+	padding-left: 20px;
+}
+
+#content .subnav .active {
+	background-color: #EEE;
+	text-decoration: underline;
+}
+
+#content .quote-offandaway {
+	background: url("../images/t-off-and-away.png") 98% center no-repeat;
+	margin-bottom: 30px;
+}
+
+#content .quote-bonobos {
+	background: url("../images/t-bonobos.png") 98% center no-repeat;
+	margin-bottom: 30px;
+}
+
+#content .quote-grooveshark {
+	background: url("../images/t-grooveshark.png") 98% center no-repeat;
+	margin-bottom: 30px;
+}
+
+#content .quote-vimeo {
+	background: url("../images/t-vimeo.png") 98% center no-repeat;
+	margin-bottom: 30px;
+}
+
+/* `Footer
+----------------------------------------------------------------------------------------------------*/
+
+footer {
+	background: #222;
+	color: #FFF;
+	padding: 30px 0;
+}
+
+footer a {
+	color: #FFF;
+}
+
+footer li {
+	float: left;
+	width: 100%;
+}
+
+footer li strong {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+footer li a {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+footer strong {
+	display: block;
+	font-size: 17px;
+	color: #666;
+	margin: 0 0 10px;
+}
+
+footer .phone {
+	color: #666;
+	font-size: 12px;
+}
+
+footer .phone strong {
+	padding-top: 20px	;
+	color: #FFF;
+	font-size: 24px;
+	margin: 0;
+}
+
+footer .icons {
+	padding-top: 30px;
+}
+
+footer .icons a {
+	background: url("../images/footer-icons.gif") -3px 0 no-repeat;
+	float: right;
+	width: 35px;
+	height: 35px;
+	overflow: hidden;
+	text-indent: -900px;
+	margin: 0 5px 0 0;
+}
+
+footer .icons .facebook {
+	background-position: -44px 0;
+	margin: 0;
+}
+
+footer .icons .rss {
+	background-position: -80px 0;
+}
+
+footer .icons .linkedin {
+	background-position: -124px 0;
+}
+
+footer .icons .youtube {
+	background-position: -170px 0;
+}
+
+
+/* `Blanket
+----------------------------------------------------------------------------------------------------*/
+
+#blanket {
+	background: url("../images/blanket.png");
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+}
+
+.video-modal {
+	position: fixed;
+	z-index: 6;
+	top: 50%;
+	left: 50%;
+	padding: 10px;
+	background: #FFF;
+	margin: -170px 0 0 -330px;
+}
+
+.video-modal .close {
+	background: url("../images/fancyzoom/closebox.png");
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	text-indent: -9000px;
+	position: absolute;
+	margin: -25px 0 0 -25px;
+}
