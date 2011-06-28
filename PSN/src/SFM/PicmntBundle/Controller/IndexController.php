@@ -14,7 +14,7 @@ class IndexController extends Controller
     * @extra:Template()
     */
     public function indexAction()
-{{    
+;{    
       	return array();
     }
 
